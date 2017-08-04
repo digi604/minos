@@ -27,10 +27,10 @@ def multiprocess_fit(blueprint):
     model = ModelBuilder().build(blueprint, default_device())
     model.fit_generator(
         generator=batch_iterator,
-        samples_per_epoch=batch_iterator.samples_per_epoch,
-        nb_epoch=10,
+        steps_per_epoch=batch_iterator.samples_per_epoch,
+        epochs=10,
         validation_data=test_batch_iterator,
-        nb_val_samples=test_batch_iterator.sample_count)
+        validation_steps=test_batch_iterator.sample_count)
 
 
 class TrainTest(unittest.TestCase):
